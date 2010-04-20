@@ -1,0 +1,3 @@
+include wad/config/deployment.ini_tmpl
+recursive-include wad/public *
+recursive-include wad/templates *
