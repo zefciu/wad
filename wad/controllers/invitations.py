@@ -30,3 +30,5 @@ class InvitationsController(BaseController):
 
     def confirmation_form(self):
         return self.render('/base.html')
+    
+
