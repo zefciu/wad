@@ -1,5 +1,6 @@
-<%def name="head()">
+<%inherit file="/base.html" />
 
+<%def name="head()">
 </%def>
 
 ${h.form(h.url_for(controller='invitations', action='submit_code'), method='post')}

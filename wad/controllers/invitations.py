@@ -1,3 +1,4 @@
+# vim: set fileencoding=utf-8
 import logging
 
 from pylons import request, response, session, tmpl_context as c
@@ -12,15 +13,30 @@ import random as rnd
 from authkit.authorize.pylons_adaptors import authorize
 from authkit.permissions import ValidAuthKitUser
 import formencode as fe
+from sqlalchemy import orm
 
 
 log = logging.getLogger(__name__)
 
-class CodeSchema(fe.Schema):
-    code = fe.validators.String(
-        min = 8, max = 8, notEmpty = True
-    )
+class CodeValidator(fe.validators.FancyValidator):
+    def _to_python(self, value, state): 
+        if len(value) != 8:
+            raise fe.Invalid(
+                u'Twój kod powinien mieć 8 znaków. Znajdziesz go na zaproszeniu',
+                value, state
+            )
+        try:
+            return meta.Session.query(model.Invitation).filter(
+                model.Invitation.code == value
+            ).one()
+        except orm.exc.NoResultFound:
+            raise fe.Invalid(
+                u'Niestety nie ma takiego zaproszenia. Sprawdź kod ponownie',
+                value, state
+            )
 
+class CodeSchema(fe.Schema):
+    code = CodeValidator()
 
 class InvitationsController(BaseController):
 
@@ -41,11 +57,6 @@ class InvitationsController(BaseController):
 
     @validate(schema = CodeSchema(), form='confirmation_form')
     def submit_code(self):
-       invitation = meta.Session.query(model.Invitation).filter(
-           model.Invitation.code == self.form_result['code']
-       ).all();
-       if not len(invitation):
-           return 'Nie ma takiego zaproszenia'
-       else:
-           return 'Zaproszenie znalezione'
-
+        session['invitation_id'] = self.form_result['code'].id
+        session.save()
+        redirect_to(controller = 'guests', action = 'confirmation_list')
