@@ -1,12 +1,20 @@
+## vim: set fileencoding=utf-8
 <%inherit file="/base.html" />
 
 <%def name="head()">
 </%def>
 
+${h.form(h.url_for(controller='guests', action='submit_confirmations'), method='post')}
 <ul>
 % for guest in c.guests:
     <li>
-    ${guest.name} ${guest.surname}
+    ${h.checkbox(
+        'guest',
+        label = '%s %s' % (guest.name, guest.surname),
+        value = guest.id
+    )}
     </li>
 % endfor
 </ul>
+${h.submit(None, u'Potwierdź')}
+${h.end_form()}
