@@ -14,8 +14,9 @@ def init_model(engine):
 guests_table = sa.Table(
     'guests', meta.metadata,
     sa.Column(
-        'id', sa.types.Integer, sa.Sequence('guests_id_seq'), 
-        primary_key = True
+        'id', sa.types.Integer, sa.schema.Sequence(
+            'guests_id_seq', optional= True
+        ), primary_key = True
     ),
     sa.Column('name', sa.types.String(32)),
     sa.Column('surname', sa.types.String(32)),
@@ -34,8 +35,9 @@ orm.mapper(Guest, guests_table)
 invitations_table = sa.Table(
     'invitations', meta.metadata,
     sa.Column(
-        'id', sa.types.Integer, sa.Sequence('invitations_id_seq'), 
-        primary_key = True
+        'id', sa.types.Integer, sa.schema.Sequence(
+            'invitations_id_seq', optional = True
+        ), primary_key = True
     ),
     sa.Column('parties', sa.types.Integer()),
     sa.Column('code', sa.types.String(8)),
@@ -45,3 +47,38 @@ class Invitation(object):
     pass
 
 orm.mapper(Invitation, invitations_table)
+
+sections_table = sa.Table(
+    'sections', meta.metadata,
+    sa.Column(
+        'id', sa.types.Integer, sa.schema.Sequence(
+            'sections_id_seq', optional = True
+        ), primary_key = True
+    ),
+    sa.Column('title', sa.types.String(128)),
+)
+
+class Section(object):
+    pass
+
+
+qnas_table = sa.Table(
+    'qnas', meta.metadata,
+    sa.Column(
+        'id', sa.types.Integer, sa.schema.Sequence(
+            'qnas_seq_id', optional = True
+        ), primary_key = True
+    ),
+    sa.Column('question', sa.types.Text()),
+    sa.Column('answer', sa.types.Text()),
+    sa.Column('section_id', sa.types.Integer, sa.ForeignKey('sections.id'))
+)
+
+class QNA(object):
+    pass
+
+orm.mapper(QNA, qnas_table)
+
+orm.mapper(Section, sections_table, properties = {
+    'qnas': orm.relationship(QNA, backref = 'section')
+})

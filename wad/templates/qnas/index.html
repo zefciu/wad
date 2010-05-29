@@ -1,0 +1,14 @@
+<%inherit file="/base.html" />
+
+<%def name="head()">
+</%def>
+
+% for s in c.sections:
+    <h2>${s.title}</h2>
+    <dl>
+    % for q in s.qnas:
+        <dt>${q.question}</dt>
+        <dd>${q.answer}</dd>
+    % endfor
+    </dl>
+% endfor
