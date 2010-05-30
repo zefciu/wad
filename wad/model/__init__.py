@@ -10,7 +10,6 @@ def init_model(engine):
     meta.engine = engine
     meta.connection = engine.connect()
 
-
 guests_table = sa.Table(
     'guests', meta.metadata,
     sa.Column(
@@ -56,22 +55,23 @@ sections_table = sa.Table(
         ), primary_key = True
     ),
     sa.Column('title', sa.types.String(128)),
+    sa.Column('order', sa.types.Integer),
 )
 
 class Section(object):
     pass
 
-
 qnas_table = sa.Table(
     'qnas', meta.metadata,
     sa.Column(
         'id', sa.types.Integer, sa.schema.Sequence(
-            'qnas_seq_id', optional = True
+            'qnas_id_seq', optional = True
         ), primary_key = True
     ),
     sa.Column('question', sa.types.Text()),
     sa.Column('answer', sa.types.Text()),
-    sa.Column('section_id', sa.types.Integer, sa.ForeignKey('sections.id'))
+    sa.Column('section_id', sa.types.Integer, sa.ForeignKey('sections.id')),
+    sa.Column('order', sa.types.Integer),
 )
 
 class QNA(object):
@@ -80,5 +80,5 @@ class QNA(object):
 orm.mapper(QNA, qnas_table)
 
 orm.mapper(Section, sections_table, properties = {
-    'qnas': orm.relationship(QNA, backref = 'section')
+    'qnas': orm.relationship(QNA, backref = 'section', order_by=qnas_table.c.order)
 })

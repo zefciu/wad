@@ -12,5 +12,7 @@ log = logging.getLogger(__name__)
 class QnasController(BaseController):
 
     def index(self):
-        c.sections = meta.Session.query(model.Section).join(model.QNA).all()
-        render('qnas/index.html')
+        c.sections = meta.Session.query(model.Section).join(model.QNA).order_by(
+            model.Section.order
+        ).all()
+        return render('qnas/index.html')
