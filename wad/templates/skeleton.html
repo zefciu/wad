@@ -14,5 +14,18 @@
     ${h.stylesheet_link(h.url_for('/css/main.css'))}
     ${next.head()}
 </%def>
-
-${next.body()}
+<div id="wrap">
+    <div id="menu">
+        <ul>
+            <li>
+                ${h.link_to(u'Pytania i odpowiedzi', h.url_for(controller = 'qnas', action = 'index'))}
+            </li>
+            <li>
+                ${h.link_to(u'Potwierdź swoje zaproszenie', h.url_for(controller = 'invitations', action = 'confirmation_form'))}
+            </li>
+        </ul>
+    </div>
+    <div id="content">
+    ${next.body()}
+    </div>
+</div>
