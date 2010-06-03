@@ -21,22 +21,41 @@ body {
 #menu a {
     display: block;
     width: 100%;
-    background-color: #CAC900;
-    color: #843300;
+    background-color: #A68240;
+    color: #FFFFFF;
     padding: 3px;
     font-variant: small-caps;
+    font-weight: bold;
     text-decoration: none
 }
+
+#menu a:hover {
+    display: block;
+    width: 100%;
+    background-color: #3A2E73;
+    color: #FFFFFF;
+    padding: 3px;
+    font-variant: small-caps;
+    font-weight: bold;
+    text-decoration: none
+}
+
+
 
 #content {
     position: absolute;
     margin-left: 210px
 }
 
-#footer {
-    width: 100%;
-    clear: both;
+h2 {
+    color: #A68240;
 }
-/*.qnas dd {
+
+.qnas dt {
+    color: #A68240;
+    font-weight: bold;
+}
+
+.qnas dd {
     display: none;
-}*/
+}
