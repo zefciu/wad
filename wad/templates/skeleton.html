@@ -1,0 +1,18 @@
+## vim: set filetype=mako
+## vim: set fileencoding=utf-8
+
+<%inherit file="/base.html" />
+
+<%def name="head()">
+    <title>Ślub Kasi Granowskiej i Szymona Pyżalskiego</title>
+    % if (config['debug']):
+        ${h.javascript_link(h.url_for('/js/ext-core/ext-core-debug.js'))}
+    % else:
+        ${h.javascript_link(h.url_for('/js/ext-core/ext-core.js'))}
+    % endif
+    ${h.javascript_link(h.url_for('/js/main.js'))}
+    ${h.stylesheet_link(h.url_for('/css/main.css'))}
+    ${next.head()}
+</%def>
+
+${next.body()}

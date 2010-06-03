@@ -1,11 +1,13 @@
-<%inherit file="/base.html" />
+## vim: set fileencoding=utf-8
+<%inherit file="/skeleton.html" />
 
 <%def name="head()">
+    ${h.javascript_link(h.url_for('/js/qnas/index.js'))}
 </%def>
 
 % for s in c.sections:
     <h2>${s.title}</h2>
-    <dl>
+    <dl class="qnas">
     % for q in s.qnas:
         <dt>${q.question}</dt>
         <dd>${q.answer}</dd>
