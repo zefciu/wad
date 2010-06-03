@@ -47,6 +47,23 @@ class Invitation(object):
 
 orm.mapper(Invitation, invitations_table)
 
+gifts_table = sa.Table(
+    'gifts', meta.metadata,
+    sa.Column(
+        'id', sa.types.Integer, sa.schema.Sequence(
+            'gifts_id_seq', optional = True
+        ), primary_key = True
+    ),
+    sa.Column('name', sa.types.String(64)),
+    sa.Column('photo', sa.types.String(64)),
+    sa.Column('explanation', sa.types.Text),
+    sa.Column('invitation_id', sa.types.Integer, sa.ForeignKey('invitations.id')),
+)
+
+class Gift(object):
+    pass
+
+
 sections_table = sa.Table(
     'sections', meta.metadata,
     sa.Column(
