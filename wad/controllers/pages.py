@@ -12,10 +12,14 @@ log = logging.getLogger(__name__)
 
 class PagesController(BaseController):
 
-    def view(slug):
+    def view(self, slug):
         try:
-            page = meta.Session.query(model.Page).filter(
-                model.page.Slug == slug 
+            c.page = meta.Session.query(model.Page).filter(
+                model.Page.slug == slug 
             ).one()
         except orm.exc.NoResultFound:
+            abort(404)
+
+        return render('pages/view.html')
+
 

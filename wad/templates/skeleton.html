@@ -17,14 +17,13 @@
 <div id="header">
     ${h.link_to(u'Ślub Kasi i Szymona', h.url_for(controller = 'pages', action = 'view', slug = 'zawiadomienie'))}
 </div>
-<div id="wrap">
     <div id="menu">
         <ul>
             <li>
                 ${h.link_to(u'Co gdzie i kiedy', h.url_for(controller = 'pages', action = 'view', slug = 'co-gdzie-kiedy'))}
             </li>
             <li>
-                ${h.link_to(u'Potwierdź swoje zaproszenie', h.url_for(controller = 'invitations', action = 'confirmation_form'))}
+                ${h.link_to(u'Potwierdź zaproszenie', h.url_for(controller = 'invitations', action = 'confirmation_form'))}
             </li>
             <li>
                 ${h.link_to(u'Lista prezentów', h.url_for(controller = 'gifts', action = 'list'))}
@@ -37,4 +36,3 @@
     <div id="content">
     ${next.body()}
     </div>
-</div>

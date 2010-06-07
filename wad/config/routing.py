@@ -20,6 +20,8 @@ def make_map():
 
     # CUSTOM ROUTES HERE
 
+    map.connect('/', controller = 'pages', action = 'view', slug = 'zawiadomienie')
+    map.connect('/{slug}', controller = 'pages', action = 'view')
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
 
