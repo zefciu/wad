@@ -1,7 +1,7 @@
 """The application's model objects"""
 import sqlalchemy as sa
 from sqlalchemy import orm
-
+orm.relationship = orm.relation
 from wad.model import meta
 
 def init_model(engine):
