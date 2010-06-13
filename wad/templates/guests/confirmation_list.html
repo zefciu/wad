@@ -11,7 +11,8 @@ ${h.form(h.url_for(controller='guests', action='submit_confirmations'), method='
     ${h.checkbox(
         'guest',
         label = '%s %s' % (guest.name, guest.surname),
-        value = guest.id
+        value = guest.id,
+        checked = guest.confirmed
     )}
     </li>
 % endfor
