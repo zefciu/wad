@@ -99,3 +99,19 @@ orm.mapper(QNA, qnas_table)
 orm.mapper(Section, sections_table, properties = {
     'qnas': orm.relationship(QNA, backref = 'section', order_by=qnas_table.c.order)
 })
+
+pages_table = sa.Table(
+    'pages', meta.metadata,
+    sa.Column(
+        'id', sa.types.Integer, sa.schema.Sequence(
+            'pages_id_seq', optional = True
+        ), primary_key = True
+    ),
+    sa.Column('slug', sa.types.String(128)),
+    sa.Column('content', sa.types.Text),
+)
+
+class Page(object):
+    pass
+
+orm.mapper(Page, pages_table)
