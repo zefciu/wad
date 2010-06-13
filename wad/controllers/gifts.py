@@ -9,8 +9,9 @@ log = logging.getLogger(__name__)
 
 class GiftsController(BaseController):
 
-    def index(self):
+    def list(self):
         # Return a rendered template
         #return render('/gifts.mako')
         # or, return a response
-        return 'Hello World'
+        return render('/gifts/list.html')
+
