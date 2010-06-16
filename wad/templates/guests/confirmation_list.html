@@ -10,7 +10,11 @@ ${h.form(h.url_for(controller='guests', action='submit_confirmations'), method='
     <li>
     ${h.checkbox(
         'guest',
-        label = '%s %s' % (guest.name, guest.surname),
+
+        label = '%s %s' % (guest.name, guest.surname)\
+        if (not guest.companion_id) else\
+        '%s %s - os tow.' % (guest.bringing.name, guest.bringing.surname),
+
         value = guest.id,
         checked = guest.confirmed
     )}

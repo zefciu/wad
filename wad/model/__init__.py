@@ -1,7 +1,7 @@
 """The application's model objects"""
 import sqlalchemy as sa
 from sqlalchemy import orm
-orm.relationship = orm.relation
+# orm.relationship = orm.relation
 from wad.model import meta
 
 def init_model(engine):
@@ -29,7 +29,9 @@ guests_table = sa.Table(
 class Guest(object):
     pass
 
-orm.mapper(Guest, guests_table)
+orm.mapper(Guest, guests_table, properties = {
+    'companions': orm.relationship(Guest, backref = orm.backref('bringing', remote_side = guests_table.c.id)),
+})
 
 invitations_table = sa.Table(
     'invitations', meta.metadata,
