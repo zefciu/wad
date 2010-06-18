@@ -6,3 +6,11 @@
 </%def>
 
 <h2>Już niedługo</h2>
+
+<ul>
+% for g in c.gifts:
+<li>
+    ${g.name}
+</li>
+% endfor
+</ul>

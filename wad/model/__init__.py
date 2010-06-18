@@ -65,6 +65,10 @@ gifts_table = sa.Table(
 class Gift(object):
     pass
 
+orm.mapper(Gift, gifts_table, properties = {
+    'invitation': orm.relationship(Invitation)
+})
+
 
 sections_table = sa.Table(
     'sections', meta.metadata,
