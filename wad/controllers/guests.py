@@ -37,4 +37,4 @@ class GuestsController(BaseController):
         except KeyError:
             redirect_to(controller = 'invitations', action = 'confirmation_form')
             
-        return render('guests/submit_confirmations')
+        return render('guests/submit_confirmations.html')
