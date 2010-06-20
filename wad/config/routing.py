@@ -21,8 +21,13 @@ def make_map():
     # CUSTOM ROUTES HERE
 
     map.connect('/', controller = 'pages', action = 'view', slug = 'zawiadomienie')
+    map.connect('/pytania', controller = 'qnas', action = 'index')
+    map.connect('/kod-zaproszenia', controller = 'invitations', action = 'confirmation_form')
+    map.connect('/zaproszenie', controller = 'guests', action = 'confirmation_list')
+    map.connect('/dziekujemy', controller = 'guests', action = 'submit_confirmations')
     map.connect('/prezent/{slug}', controller = 'gifts', action = 'view')
     map.connect('/dam/{slug}', controller = 'gifts', action = 'confirm')
+    map.connect('/wystarczy', controller = 'gifts', action = 'too_much')
     map.connect('/{slug}', controller = 'pages', action = 'view')
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
