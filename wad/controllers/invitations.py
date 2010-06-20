@@ -36,7 +36,7 @@ class CodeValidator(fe.validators.FancyValidator):
             )
 
 class CodeSchema(fe.Schema):
-    code = CodeValidator()
+    code = CodeValidator(not_empty = True)
 
 class InvitationsController(BaseController):
 
@@ -59,4 +59,10 @@ class InvitationsController(BaseController):
     def submit_code(self):
         session['invitation_id'] = self.form_result['code'].id
         session.save()
-        redirect_to(controller = 'guests', action = 'confirmation_list')
+        if (session.has_key('redir')):
+            redir = session['redir']
+            del(session['redir'])
+            session.save()
+            redirect_to(redir)
+        else:
+            redirect_to(controller = 'guests', action = 'confirmation_list')

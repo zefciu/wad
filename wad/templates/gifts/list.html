@@ -6,3 +6,11 @@
 </%def>
 
 <h2>Już niedługo</h2>
+
+<ul>
+% for g in c.gifts:
+<li>
+    ${h.link_to(g.name, h.url_for(controller = 'gifts', action = 'view', slug = g.slug))}
+</li>
+% endfor
+</ul>

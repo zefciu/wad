@@ -28,7 +28,9 @@ guests_table = sa.Table(
 class Guest(object):
     pass
 
-orm.mapper(Guest, guests_table)
+orm.mapper(Guest, guests_table, properties = {
+    'companions': orm.relationship(Guest, backref = orm.backref('bringing', remote_side = guests_table.c.id)),
+})
 
 invitations_table = sa.Table(
     'invitations', meta.metadata,
@@ -54,6 +56,7 @@ gifts_table = sa.Table(
         ), primary_key = True
     ),
     sa.Column('name', sa.types.String(64)),
+    sa.Column('slug', sa.types.String(64)),
     sa.Column('photo', sa.types.String(64)),
     sa.Column('explanation', sa.types.Text),
     sa.Column('invitation_id', sa.types.Integer, sa.ForeignKey('invitations.id')),
@@ -61,6 +64,10 @@ gifts_table = sa.Table(
 
 class Gift(object):
     pass
+
+orm.mapper(Gift, gifts_table, properties = {
+    'invitation': orm.relationship(Invitation)
+})
 
 
 sections_table = sa.Table(
