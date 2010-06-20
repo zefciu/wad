@@ -57,6 +57,7 @@ gifts_table = sa.Table(
         ), primary_key = True
     ),
     sa.Column('name', sa.types.String(64)),
+    sa.Column('slug', sa.types.String(64)),
     sa.Column('photo', sa.types.String(64)),
     sa.Column('explanation', sa.types.Text),
     sa.Column('invitation_id', sa.types.Integer, sa.ForeignKey('invitations.id')),

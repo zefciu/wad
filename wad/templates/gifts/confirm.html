@@ -1,0 +1,15 @@
+## vim: set fileencoding=utf-8
+
+<%inherit file="/skeleton.html" />
+
+<%def name="head()">
+<script>
+    setTimeout(function () {
+        location.href='/';
+    }, 3000)
+</script>
+</%def>
+
+<p>Potwierdziłeś właśnie chęć ofiarowania nam prezentu:</p>
+<p>${c.gift.name}</p>
+<p>Dziękujemy!</p>

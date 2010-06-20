@@ -44,7 +44,13 @@ body {
     /*margin-top: 5px;*/
 }
 
-#menu a {
+.btn {
+    margin-top: 50px;
+    width: 200px;
+}
+
+#menu a,
+.btn a {
     display: block;
     width: 100%;
     background-color: #A68240;
@@ -55,7 +61,8 @@ body {
     text-decoration: none
 }
 
-#menu a:hover {
+#menu a:hover,
+.btn a:hover {
     display: block;
     width: 100%;
     background-color: #3A2E73;

@@ -1,0 +1,15 @@
+## vim: set fileencoding=utf-8
+
+<%inherit file="/skeleton.html" />
+
+<%def name="head()">
+</%def>
+
+% if c.gift.photo:
+    <img src="/img/gifts/${c.gift.photo}">
+% endif
+<h2>${c.gift.name}</h2>
+${c.gift.explanation}
+<div class="btn">
+${h.link_to('Dam to', h.url_for(controller = 'gifts', action = 'confirm', slug = c.gift.slug))}
+</div>

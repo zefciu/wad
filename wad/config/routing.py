@@ -21,6 +21,8 @@ def make_map():
     # CUSTOM ROUTES HERE
 
     map.connect('/', controller = 'pages', action = 'view', slug = 'zawiadomienie')
+    map.connect('/prezent/{slug}', controller = 'gifts', action = 'view')
+    map.connect('/dam/{slug}', controller = 'gifts', action = 'confirm')
     map.connect('/{slug}', controller = 'pages', action = 'view')
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
