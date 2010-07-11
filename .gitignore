@@ -3,3 +3,4 @@ user_data
 *.pyc
 data
 nbproject
+wad/public/img
