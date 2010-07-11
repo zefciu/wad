@@ -19,7 +19,7 @@ class GiftsController(BaseController):
     def list(self):
         c.gifts = meta.Session.query(model.Gift).filter(
             model.Gift.invitation_id == None
-        )
+        ).order_by(model.Gift.name).all()
         return render('/gifts/list.html')
 
     @check_invitation

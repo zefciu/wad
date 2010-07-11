@@ -82,6 +82,19 @@ body {
     margin-top: 100px;
 }
 
+#gift-list {
+    list-style: none;
+}
+
+#gift-list a {
+    text-decoration: none;
+    color: #000000;
+}
+
+#gift-list a:hover {
+    text-decoration: underline
+}
+
 h2 {
     color: #A68240;
 }
