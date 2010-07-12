@@ -1,8 +1,9 @@
 body {
-    font: 12pt sans-serif;
+    font: 12pt Bookman Old Style, Tahoma, sans-serif;
     text-align: justify;
     line-height: 30px;
     background-color: #FFF4A6;
+    background-image: url(../img/textures/tx0.jpeg);
 }
 
 #header a {
@@ -12,8 +13,7 @@ body {
     text-align: center;
     font-style: italic;
     font-size: 25px;
-    font-family: fantasy;
-    background-color: #A68240;
+    background-color: #5C3317;
     text-decoration: none;
     color: #FFFFFF;
     display: block;
@@ -53,12 +53,12 @@ body {
 .btn a {
     display: block;
     width: 100%;
-    background-color: #A68240;
+    background-color: #5C3317;
     color: #FFFFFF;
     padding: 3px;
-    font-variant: small-caps;
-    font-weight: bold;
-    text-decoration: none
+    text-decoration: none;
+    text-align: center;
+    font-style: italic;
 }
 
 #menu a:hover,
@@ -68,8 +68,6 @@ body {
     background-color: #3A2E73;
     color: #FFFFFF;
     padding: 3px;
-    font-variant: small-caps;
-    font-weight: bold;
     text-decoration: none
 }
 
@@ -78,8 +76,9 @@ body {
 #content {
     margin-left: auto;
     margin-right: auto;
-    width: 815px;
+    width: 915px;
     margin-top: 100px;
+    font-weight: bold;
 }
 
 #gift-list {
@@ -96,11 +95,11 @@ body {
 }
 
 h2 {
-    color: #A68240;
+    color: #5C3317;
 }
 
 .qnas dt {
-    color: #A68240;
+    color: #5C3317;
     font-weight: bold;
 }
 
@@ -109,5 +108,6 @@ h2 {
 }
 
 .tiny {
-    font-size: 10px;
+    font-size: 14px;
+    font-weight: normal;
 }
