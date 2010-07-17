@@ -1,9 +1,16 @@
 body {
-    font: 12pt Tahoma, sans-serif;
-    text-align: justify;
-    line-height: 30px;
-    background-color: #FFF4A6;
-    background-image: url(../img/textures/tx0.jpeg);
+    -x-system-font:none;
+    background-color:#FFF4A6;
+    background-image:url(../img/textures/tx0.jpeg);
+    font-family:Palatino linotype;
+    font-size:12pt;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-weight:normal;
+    line-height:30px;
+    text-align:justify;
+    color: #5C3317;
 }
 
 #header a {
@@ -87,7 +94,7 @@ body {
 
 #gift-list a {
     text-decoration: none;
-    color: #000000;
+    color: #5C3317;
 }
 
 #gift-list a:hover {
