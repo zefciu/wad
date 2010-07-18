@@ -118,3 +118,8 @@ h2 {
     font-size: 14px;
     font-weight: normal;
 }
+
+.left {
+    float: left;
+    margin-right: 20px;
+}
