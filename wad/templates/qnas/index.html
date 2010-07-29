@@ -9,7 +9,7 @@
     <h2>${s.title}</h2>
     <dl class="qnas">
     % for q in s.qnas:
-        <dt>${q.question}</dt>
+        <dt><a href="#">${q.question}</a></dt>
         <dd>${q.answer}</dd>
     % endfor
     </dl>

@@ -105,9 +105,14 @@ h2 {
     color: #5C3317;
 }
 
-.qnas dt {
+.qnas dt a {
     color: #5C3317;
     font-weight: bold;
+    text-decoration: none;
+}
+
+.qnas dt a:hover {
+    text-decoration: underline;
 }
 
 .qnas dd {
