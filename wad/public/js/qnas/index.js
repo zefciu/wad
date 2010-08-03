@@ -10,6 +10,8 @@ WAD.QNA = Ext.extend(Ext.util.Observable, {
 
             this.dt = Ext.get(elId);
             this.dd = this.dt.next();
+	    this.a = this.dt.child('a');
+	    this.a.dom.removeAttribute('href');
             this.dd.setVisibilityMode(Ext.Element.DISPLAY);
             this.dd.hide();
             this.open = false;
