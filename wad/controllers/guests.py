@@ -1,7 +1,7 @@
 import logging
 
-from pylons import request, response, session, tmpl_context as c
-from pylons.controllers.util import abort, redirect_to
+from pylons import request, response, session, tmpl_context as c, url
+from pylons.controllers.util import abort, redirect
 from pylons.decorators import validate
 
 import formencode as fe
@@ -23,7 +23,7 @@ class GuestsController(BaseController):
                 model.Guest.invitation_id == session['invitation_id']
             ).all()
         except KeyError:
-            redirect_to(controller = 'invitations', action = 'confirmation_form')
+            redirect(url(controller = 'invitations', action = 'confirmation_form'))
         return render('guests/confirmation_list.html')
 
     @validate(schema = ConfSchema(), form = 'confirmation_list')
@@ -35,6 +35,6 @@ class GuestsController(BaseController):
                 values = {model.guests_table.c.confirmed: True}
             ))
         except KeyError:
-            redirect_to(controller = 'invitations', action = 'confirmation_form')
+            redirect(url(controller = 'invitations', action = 'confirmation_form'))
             
         return render('guests/submit_confirmations.html')

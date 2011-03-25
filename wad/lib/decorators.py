@@ -1,6 +1,6 @@
 from decorator import decorator
-from pylons import session, request
-from pylons.controllers.util import abort, redirect_to
+from pylons import session, request, url
+from pylons.controllers.util import abort, redirect
 from wad import model
 from wad.model import meta
 import routes
@@ -12,7 +12,7 @@ def check_invitation(func, self, *args, **kwargs):
     except KeyError:
         session['redir'] = routes.url_for(request.url)
         session.save()
-        redirect_to(controller = 'invitations', action = 'confirmation_form')
+        redirect(url(controller = 'invitations', action = 'confirmation_form'))
     return func(self, *args, **kwargs)
 
 @decorator
@@ -22,7 +22,7 @@ def check_gift_count(func, self, *args, **kwargs):
     ).count() >= meta.Session.query(model.Guest).filter(
         model.Guest.invitation_id == self.invitation_id
     ).count():
-        redirect_to(controller = 'gifts', action = 'too_much')
+        redirect(url(controller = 'gifts', action = 'too_much'))
         return
     else: 
         return func(self, *args, **kwargs)

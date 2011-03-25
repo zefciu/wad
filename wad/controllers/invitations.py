@@ -1,8 +1,8 @@
 # vim: set fileencoding=utf-8
 import logging
 
-from pylons import request, response, session, tmpl_context as c
-from pylons.controllers.util import abort, redirect_to
+from pylons import request, response, session, tmpl_context as c, url
+from pylons.controllers.util import abort, redirect
 from pylons.decorators import validate
 
 from wad.lib.base import BaseController, render
@@ -63,6 +63,6 @@ class InvitationsController(BaseController):
             redir = session['redir']
             del(session['redir'])
             session.save()
-            redirect_to(redir)
+            redirect(redir)
         else:
-            redirect_to(controller = 'guests', action = 'confirmation_list')
+            redirect(url(controller = 'guests', action = 'confirmation_list'))
